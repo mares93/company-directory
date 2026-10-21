@@ -1,0 +1,32 @@
+/* Design tokens and the few UI pieces shared by several components. Everything else lives next to its component. */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --ink: #111936;
+  --muted: #6b7390;
+  --line: #e6e8f0;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: #f5f6fa; color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+h1 { font-size: 2rem; font-weight: 800; margin: 0; }
+h2 { font-size: 1.15rem; font-weight: 700; margin: 0; }
+
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem; }
+.hint { color: var(--muted); font-size: .9rem; margin: .15rem 0 1rem; }
+.hint.small { font-size: .78rem; margin: .3rem 0 1rem; }
+
+label { display: block; font-size: .85rem; font-weight: 600; margin: .75rem 0 .35rem; }
+.field { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: .55rem .75rem; font-size: .9rem; background: #fff; }
+.field:focus { outline: 2px solid #c7c4f7; border-color: var(--primary); }
+
+.btn-primary-x, .btn-secondary-x { display: flex; justify-content: center; align-items: center; gap: .4rem; width: 100%; border-radius: 8px; padding: .6rem 1rem; font-weight: 600; font-size: .9rem; border: 1px solid var(--primary); }
+.btn-primary-x { background: var(--primary); color: #fff; }
+.btn-primary-x:hover { background: var(--primary-dark); }
+.btn-secondary-x { background: #fff; color: var(--primary); margin-top: .5rem; }
+.btn-secondary-x:hover { background: #f5f4ff; }
+
+.sort { display: flex; align-items: center; gap: .4rem; font-weight: 400; color: var(--muted); font-size: .8rem; margin: .9rem 0 .5rem; }
+.sort select { border: 0; background: transparent; color: var(--primary); font-weight: 600; }
