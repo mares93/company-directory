@@ -1,0 +1,18 @@
+<section class="panel login">
+  <h2>Sign in</h2>
+  <p class="hint">Sign in to view and add companies.</p>
+  <form (ngSubmit)="login()">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" class="field" [(ngModel)]="email" autocomplete="username" />
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" class="field" [(ngModel)]="password"
+           placeholder="Min. 8 characters" autocomplete="current-password" />
+    <button type="submit" class="btn-primary-x">Log in</button>
+    <button type="button" class="btn-secondary-x" (click)="register()">Register</button>
+  </form>
+  @if (error(); as e) {
+    <app-alert kind="error">{{ e }}</app-alert>
+  } @else if (expired()) {
+    <app-alert kind="error">Your session expired. Please sign in again.</app-alert>
+  }
+</section>
