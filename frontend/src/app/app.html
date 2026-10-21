@@ -1,0 +1,12 @@
+<app-header />
+
+<main class="page">
+  <h1>Companies</h1>
+  <p class="lead">Add and discover companies in one place.</p>
+
+  @if (session()) {
+    <app-companies-page />
+  } @else {
+    <app-login />
+  }
+</main>
