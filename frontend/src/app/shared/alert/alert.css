@@ -1,0 +1,7 @@
+:host { display: block; }
+.state { display: flex; align-items: center; gap: .7rem; border-radius: 10px; padding: .8rem 1rem; margin-top: 1rem; font-size: .85rem; border: 1px solid; }
+.state i { font-size: 1.2rem; }
+.state-ok { background: #effaf3; border-color: #a7dfbc; color: #1a7f4b; }
+.state-err { background: #fff0f0; border-color: #f2b3b3; color: #b42323; }
+.state-empty { background: #f7f8fb; border-color: var(--line); color: var(--ink); }
+.state-empty i { color: var(--muted); }

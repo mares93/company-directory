@@ -1,0 +1,11 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Company Directory</span>
+    @if (session(); as s) {
+      <div class="user">
+        <small>{{ s.email }}</small>
+        <button type="button" class="btn-ghost" (click)="logout()">Log out</button>
+      </div>
+    }
+  </div>
+</header>

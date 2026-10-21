@@ -1,0 +1,5 @@
+<div class="state" [class.state-ok]="kind() === 'ok'" [class.state-err]="kind() === 'error'"
+     [class.state-empty]="kind() === 'empty'" role="alert">
+  <i class="bi" [class]="icon()"></i>
+  <span><ng-content /></span>
+</div>
