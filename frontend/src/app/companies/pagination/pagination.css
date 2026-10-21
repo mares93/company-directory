@@ -1,0 +1,8 @@
+.pager { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: .8rem; }
+.pager .hint, .pager .sort { margin: 0; }
+.pages { display: flex; align-items: center; gap: .25rem; margin-left: auto; }
+.page-btn { min-width: 32px; height: 32px; border: 1px solid var(--line); background: #fff; border-radius: 8px; font-size: .85rem; }
+.page-btn:hover:not(:disabled) { background: #f5f4ff; }
+.page-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.page-btn:disabled { opacity: .4; cursor: default; }
+.ellipsis { color: var(--muted); padding: 0 .25rem; }

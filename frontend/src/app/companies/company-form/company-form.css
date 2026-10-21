@@ -1,0 +1,5 @@
+.url-group { display: flex; border: 1px solid var(--line); border-radius: 8px; background: #fff; overflow: hidden; }
+.url-group:focus-within { outline: 2px solid #c7c4f7; border-color: var(--primary); }
+.url-group select { border: 0; border-right: 1px solid var(--line); background: #f7f8fb; color: var(--muted); padding: 0 .4rem 0 .6rem; font-size: .85rem; }
+.url-group input { flex: 1; min-width: 0; border: 0; padding: .55rem .75rem; font-size: .9rem; background: transparent; }
+.url-group input:focus, .url-group select:focus { outline: none; }

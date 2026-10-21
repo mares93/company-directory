@@ -1,0 +1,2 @@
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 1.25rem; align-items: start; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }

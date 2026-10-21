@@ -1,0 +1,70 @@
+<section class="panel">
+  <h2>Company directory</h2>
+  <p class="hint">{{ total() }} {{ total() === 1 ? 'company' : 'companies' }}</p>
+
+  <form class="filters" (ngSubmit)="search()">
+    <div class="icon-field">
+      <i class="bi bi-search"></i>
+      <input name="nameFilter" class="field" [(ngModel)]="nameFilter" placeholder="Search by company name..." autocomplete="off" />
+    </div>
+    <div class="icon-field">
+      <i class="bi bi-link-45deg"></i>
+      <input name="domainFilter" class="field" [(ngModel)]="domainFilter" placeholder="Filter by website..." autocomplete="off" />
+    </div>
+    <button type="submit" class="btn-primary-x">Search</button>
+  </form>
+
+  <label class="sort">Sort:
+    <select [ngModel]="sort()" (ngModelChange)="setSort($event)" name="sort">
+      <option value="relevance">Relevance</option>
+      <option value="name">Name (A-Z)</option>
+      <option value="newest">Newest</option>
+    </select>
+  </label>
+
+  @if (error(); as e) {
+    <app-alert kind="error">{{ e }}</app-alert>
+  } @else if (total() === 0) {
+    <app-alert kind="empty"><strong>No companies found.</strong><br />Try another name or domain.</app-alert>
+  } @else {
+    <table class="directory">
+      <thead>
+        <tr><th>Company</th><th>Website</th><th></th></tr>
+      </thead>
+      <tbody>
+        @for (r of rows(); track r.company.id) {
+          <tr>
+            <td>
+              <span [class]="'avatar ' + avatarClass(r.company.name)">{{ r.company.name.charAt(0).toUpperCase() }}</span>
+              <strong>{{ r.company.name }}</strong>
+              @if (r.relevance !== undefined) { <span class="score" title="Relevance">{{ r.relevance }}</span> }
+            </td>
+            <td><a class="site" [href]="r.company.websiteUrl" target="_blank" rel="noopener">{{ displayUrl(r.company.websiteUrl) }}</a></td>
+            <td class="right">
+              <button type="button" class="link" (click)="toggleDetails(r.company)">
+                View details <i class="bi" [class.bi-chevron-right]="detail()?.id !== r.company.id" [class.bi-chevron-down]="detail()?.id === r.company.id"></i>
+              </button>
+            </td>
+          </tr>
+          @if (detail(); as d) {
+            @if (d.id === r.company.id) {
+              <tr class="detail-row">
+                <td colspan="3">
+                  <dl>
+                    <dt>Website</dt><dd><a [href]="d.websiteUrl" target="_blank" rel="noopener">{{ d.websiteUrl }}</a></dd>
+                    <dt>Added by</dt><dd>{{ d.createdBy }}</dd>
+                    <dt>Added on</dt><dd>{{ d.createdAtUtc | date: 'medium' }}</dd>
+                    <dt>Id</dt><dd class="mono">{{ d.id }}</dd>
+                  </dl>
+                </td>
+              </tr>
+            }
+          }
+        }
+      </tbody>
+    </table>
+
+    <app-pagination [page]="page()" [pageSize]="pageSize()" [total]="total()"
+                    (pageChange)="goTo($event)" (pageSizeChange)="setPageSize($event)" />
+  }
+</section>

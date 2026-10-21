@@ -1,0 +1,23 @@
+<div class="pager">
+  <span class="hint">Showing {{ rangeStart() }}-{{ rangeEnd() }} of {{ total() }}</span>
+  <label class="sort">Rows:
+    <select [ngModel]="pageSize()" (ngModelChange)="pageSizeChange.emit(+$event)" name="pageSize">
+      <option [ngValue]="5">5</option>
+      <option [ngValue]="10">10</option>
+      <option [ngValue]="20">20</option>
+    </select>
+  </label>
+  @if (totalPages() > 1) {
+    <nav class="pages" aria-label="Pagination">
+      <button type="button" class="page-btn" [disabled]="page() === 1" (click)="goTo(page() - 1)" aria-label="Previous page"><i class="bi bi-chevron-left"></i></button>
+      @for (p of buttons(); track $index) {
+        @if (p === -1) {
+          <span class="ellipsis">…</span>
+        } @else {
+          <button type="button" class="page-btn" [class.active]="p === page()" (click)="goTo(p)">{{ p }}</button>
+        }
+      }
+      <button type="button" class="page-btn" [disabled]="page() === totalPages()" (click)="goTo(page() + 1)" aria-label="Next page"><i class="bi bi-chevron-right"></i></button>
+    </nav>
+  }
+</div>

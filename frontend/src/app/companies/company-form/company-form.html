@@ -1,0 +1,24 @@
+<section class="panel">
+  <h2>Add company</h2>
+  <p class="hint">Enter the company details below.</p>
+  <form (ngSubmit)="submit()">
+    <label for="name">Company name</label>
+    <input id="name" name="name" class="field" [(ngModel)]="name" placeholder="e.g. Acme" autocomplete="off" />
+
+    <label for="url">Website URL</label>
+    <div class="url-group">
+      <select name="protocol" aria-label="Protocol" [(ngModel)]="protocol">
+        <option value="https://">https://</option>
+        <option value="http://">http://</option>
+      </select>
+      <input id="url" name="url" [ngModel]="websiteUrl()" (ngModelChange)="onUrlChange($event)"
+             placeholder="www.acme.com" autocomplete="off" />
+    </div>
+    <p class="hint small">Use the official company website.</p>
+
+    <button type="submit" class="btn-primary-x"><i class="bi bi-plus-lg"></i> Add company</button>
+  </form>
+  @if (message(); as m) {
+    <app-alert [kind]="m.ok ? 'ok' : 'error'">{{ m.text }}</app-alert>
+  }
+</section>
